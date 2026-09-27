@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Estado** | 🟡 En progreso: Fase 1, análisis de requisitos |
-| **Tester** | [Tu nombre completo] |
+| **Tester** |Johan Quiñones Diaz @JohanQD|
 | **Tipo de prueba** | Manual, funcional, de caja negra |
 | **Casos de prueba** | 50 diseñados · 0 ejecutados |
 | **Bugs reportados** | 0 (se actualiza durante la ejecución) |
