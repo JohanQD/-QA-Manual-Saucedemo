@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Proyecto** | Pruebas manuales del flujo de compra de SauceDemo |
-| **Tester** | [Tu nombre completo] |
+| **Tester** | Johan Felipe Quiñones Diaz |
 | **Versión del plan** | 1.0 |
 | **Fecha de inicio** | 27 de septiembre de 2026 |
 | **Aplicación** | https://www.saucedemo.com |
