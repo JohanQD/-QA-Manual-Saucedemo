@@ -1,0 +1,160 @@
+ID,Módulo,Requisito,Título,Usuario,Precondiciones,Pasos,Datos de prueba,Resultado esperado,Prioridad,Tipo,Técnica de diseño,Resultado obtenido,Estado,ID Bug,Fecha de ejecución,Navegador,Notas
+TC-001,Login,REQ-01,Inicio de sesión exitoso con usuario estándar,standard_user,Página de login abierta en ventana de incógnito,"1. Escribir el usuario.
+2. Escribir la contraseña.
+3. Hacer clic en ""Login"".","Usuario: standard_user
+Contraseña: válida","Se abre la página de productos (/inventory.html) con el título ""Products"".",Alta,Funcional,Partición de equivalencia (válida),,No ejecutado,,,,
+TC-002,Login,REQ-02,Inicio de sesión con contraseña incorrecta,standard_user,Página de login abierta en ventana de incógnito,"1. Escribir el usuario.
+2. Escribir una contraseña incorrecta.
+3. Hacer clic en ""Login"".","Usuario: standard_user
+Contraseña: clave123","No se inicia sesión. Se muestra: ""Epic sadface: Username and password do not match any user in this service"".",Alta,Negativa,Partición de equivalencia (inválida),,No ejecutado,,,,
+TC-003,Login,REQ-02,Inicio de sesión con usuario inexistente,usuario_falso,Página de login abierta en ventana de incógnito,"1. Escribir un usuario que no existe.
+2. Escribir la contraseña.
+3. Hacer clic en ""Login"".","Usuario: usuario_falso
+Contraseña: válida","No se inicia sesión. Se muestra: ""Epic sadface: Username and password do not match any user in this service"".",Media,Negativa,Partición de equivalencia (inválida),,No ejecutado,,,,
+TC-004,Login,REQ-02,Inicio de sesión con el usuario vacío,(vacío),Página de login abierta en ventana de incógnito,"1. Dejar vacío el campo de usuario.
+2. Escribir la contraseña.
+3. Hacer clic en ""Login"".","Usuario: (vacío)
+Contraseña: válida","No se inicia sesión. Se muestra: ""Epic sadface: Username is required"".",Alta,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-005,Login,REQ-02,Inicio de sesión con la contraseña vacía,standard_user,Página de login abierta en ventana de incógnito,"1. Escribir el usuario.
+2. Dejar vacía la contraseña.
+3. Hacer clic en ""Login"".","Usuario: standard_user
+Contraseña: (vacía)","No se inicia sesión. Se muestra: ""Epic sadface: Password is required"".",Alta,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-006,Login,REQ-02,Inicio de sesión con ambos campos vacíos,(vacío),Página de login abierta en ventana de incógnito,"1. Dejar ambos campos vacíos.
+2. Hacer clic en ""Login"".","Usuario: (vacío)
+Contraseña: (vacía)","No se inicia sesión. Se muestra: ""Epic sadface: Username is required"".",Media,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-007,Login,REQ-03,Inicio de sesión con usuario bloqueado,locked_out_user,Página de login abierta en ventana de incógnito,"1. Escribir el usuario bloqueado.
+2. Escribir la contraseña.
+3. Hacer clic en ""Login"".","Usuario: locked_out_user
+Contraseña: válida","No se inicia sesión. Se muestra: ""Epic sadface: Sorry, this user has been locked out."".",Alta,Negativa,Partición de equivalencia (bloqueado),,No ejecutado,,,,
+TC-008,Login,REQ-04,La contraseña se oculta al escribirla,—,Página de login abierta en ventana de incógnito,"1. Escribir un texto en el campo de contraseña.
+2. Observar el campo.",Contraseña: prueba123,"Los caracteres se ven como puntos, no como texto legible.",Media,Seguridad / Interfaz,Verificación de interfaz,,No ejecutado,,,,
+TC-009,Login,REQ-02,Cerrar el mensaje de error,(vacío),Mensaje de error visible (ejecutar antes TC-004),"1. Hacer clic en la ""X"" del mensaje de error.",—,El mensaje desaparece y los campos dejan de estar marcados como error.,Baja,Interfaz,Transición de estados,,No ejecutado,,,,
+TC-010,Login,REQ-04,Entrar a una página interna sin iniciar sesión,—,"Ventana de incógnito nueva, sin sesión iniciada","1. Escribir en la barra de direcciones: https://www.saucedemo.com/inventory.html
+2. Presionar Enter.",URL: /inventory.html,"No se muestran los productos. Aparece el login con el mensaje: ""Epic sadface: You can only access '/inventory.html' when you are logged in."".",Alta,Seguridad,Prueba negativa,,No ejecutado,,,,
+TC-011,Login,REQ-01,Inicio de sesión con la tecla Enter,standard_user,Página de login abierta en ventana de incógnito,"1. Escribir el usuario.
+2. Escribir la contraseña.
+3. Presionar Enter sin hacer clic en ""Login"".","Usuario: standard_user
+Contraseña: válida","Se inicia sesión igual que con el botón ""Login"".",Baja,Usabilidad,Prueba funcional,,No ejecutado,,,,
+TC-012,Catálogo,REQ-05,El catálogo muestra los 6 productos completos,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Observar la página de productos.
+2. Revisar cada producto.","Sauce Labs Backpack $29.99
+Sauce Labs Bike Light $9.99
+Sauce Labs Bolt T-Shirt $15.99
+Sauce Labs Fleece Jacket $49.99
+Sauce Labs Onesie $7.99
+Test.allTheThings() T-Shirt (Red) $15.99","Se ven 6 productos. Cada uno tiene imagen, nombre, descripción, precio y botón ""Add to cart"". Nombres y precios coinciden con los datos de prueba.",Alta,Funcional / Interfaz,Verificación contra oráculo,,No ejecutado,,,,
+TC-013,Catálogo,REQ-06,Orden por defecto: nombre de la A a la Z,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Observar el menú de orden (arriba a la derecha).
+2. Observar el orden de los productos.",—,"El menú dice ""Name (A to Z)"" y el primer producto es ""Sauce Labs Backpack"".",Media,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-014,Catálogo,REQ-06,Ordenar por nombre de la Z a la A,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el menú de orden.
+2. Elegir ""Name (Z to A)"".",Opción: Name (Z to A),"El primer producto es ""Test.allTheThings() T-Shirt (Red)"" y el último es ""Sauce Labs Backpack"".",Media,Funcional,Partición de equivalencia (opciones de orden),,No ejecutado,,,,
+TC-015,Catálogo,REQ-06,Ordenar por precio de menor a mayor,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el menú de orden.
+2. Elegir ""Price (low to high)"".",Opción: Price (low to high),"El primero es ""Sauce Labs Onesie"" ($7.99) y el último es ""Sauce Labs Fleece Jacket"" ($49.99).",Media,Funcional,Partición de equivalencia (opciones de orden),,No ejecutado,,,,
+TC-016,Catálogo,REQ-06,Ordenar por precio de mayor a menor,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el menú de orden.
+2. Elegir ""Price (high to low)"".",Opción: Price (high to low),"El primero es ""Sauce Labs Fleece Jacket"" ($49.99) y el último es ""Sauce Labs Onesie"" ($7.99).",Media,Funcional,Partición de equivalencia (opciones de orden),,No ejecutado,,,,
+TC-017,Catálogo,REQ-07,Agregar un producto al carrito desde el catálogo,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Hacer clic en ""Add to cart"" de Sauce Labs Backpack.",Producto: Sauce Labs Backpack,"El botón cambia a ""Remove"" y el ícono del carrito muestra ""1"".",Alta,Funcional,Transición de estados,,No ejecutado,,,,
+TC-018,Catálogo,REQ-07,Quitar un producto del carrito desde el catálogo,standard_user,Sesión iniciada con standard_user; Sauce Labs Backpack en el carrito,"1. Hacer clic en ""Remove"" de Sauce Labs Backpack.",Producto: Sauce Labs Backpack,"El botón vuelve a ""Add to cart"" y el número del ícono del carrito desaparece.",Alta,Funcional,Transición de estados,,No ejecutado,,,,
+TC-019,Catálogo,REQ-07,Agregar los 6 productos al carrito,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Hacer clic en ""Add to cart"" de cada uno de los 6 productos.",Los 6 productos,"Los 6 botones dicen ""Remove"" y el ícono del carrito muestra ""6"".",Media,Funcional,Valores límite (máximo de productos),,No ejecutado,,,,
+TC-020,Detalle,REQ-08,Abrir el detalle desde el nombre del producto,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Hacer clic en el nombre ""Sauce Labs Bike Light"".
+2. Comparar con lo que muestra el catálogo.",Producto: Sauce Labs Bike Light ($9.99),"Se abre el detalle con el mismo nombre, descripción, precio ($9.99) e imagen que en el catálogo.",Alta,Funcional,Verificación contra oráculo,,No ejecutado,,,,
+TC-021,Detalle,REQ-07,Agregar al carrito desde el detalle,standard_user,Detalle de Sauce Labs Bike Light abierto; carrito vacío,"1. Hacer clic en ""Add to cart"".",Producto: Sauce Labs Bike Light,"El botón cambia a ""Remove"" y el ícono del carrito muestra ""1"".",Media,Funcional,Transición de estados,,No ejecutado,,,,
+TC-022,Detalle,REQ-08,Volver al catálogo desde el detalle,standard_user,Detalle de un producto abierto (continuar desde TC-021),"1. Hacer clic en ""Back to products"".",—,"Vuelve a la página de productos. El producto agregado en TC-021 muestra el botón ""Remove"".",Media,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-023,Carrito,REQ-07,El carrito muestra los productos agregados,standard_user,Sesión iniciada con standard_user; Backpack y Bike Light en el carrito,"1. Hacer clic en el ícono del carrito.
+2. Revisar la lista.","Productos: Sauce Labs Backpack ($29.99), Sauce Labs Bike Light ($9.99)","Se abre ""Your Cart"" con los 2 productos. Cada uno muestra cantidad 1, nombre, descripción y el mismo precio del catálogo.",Alta,Funcional,Verificación contra oráculo,,No ejecutado,,,,
+TC-024,Carrito,REQ-07,Quitar un producto desde el carrito,standard_user,Carrito abierto con Backpack y Bike Light (continuar desde TC-023),"1. Hacer clic en ""Remove"" de Sauce Labs Bike Light.",Producto: Sauce Labs Bike Light,"Bike Light desaparece de la lista, queda solo Backpack y el ícono del carrito muestra ""1"".",Alta,Funcional,Transición de estados,,No ejecutado,,,,
+TC-025,Carrito,REQ-07,Seguir comprando desde el carrito,standard_user,Carrito abierto con al menos 1 producto,"1. Hacer clic en ""Continue Shopping"".",—,"Vuelve a la página de productos. Lo agregado sigue en el carrito (botón ""Remove"" y el mismo número en el ícono).",Media,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-026,Checkout,REQ-12,Intentar comprar con el carrito vacío,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el carrito vacío.
+2. Hacer clic en ""Checkout"".
+3. Si deja avanzar, llenar los datos, hacer clic en ""Continue"" y luego en ""Finish"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111","El sistema no deja avanzar al checkout sin productos, o muestra un aviso. (Requisito inferido: confirmar con el dueño del producto.)",Alta,Negativa,Valores límite (0 productos),,No ejecutado,,,,
+TC-027,Checkout,REQ-09,Datos de envío válidos,standard_user,Sesión iniciada con standard_user; Sauce Labs Backpack en el carrito; carrito abierto,"1. Hacer clic en ""Checkout"".
+2. Llenar First Name, Last Name y Zip/Postal Code.
+3. Hacer clic en ""Continue"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111","Se abre la página ""Checkout: Overview"".",Alta,Funcional,Partición de equivalencia (válida),,No ejecutado,,,,
+TC-028,Checkout,REQ-09,Nombre vacío en los datos de envío,standard_user,"Página ""Checkout: Your Information"" abierta con un producto en el carrito","1. Dejar vacío First Name.
+2. Llenar Last Name y Zip/Postal Code.
+3. Hacer clic en ""Continue"".","First Name: (vacío)
+Last Name: Gómez
+Zip/Postal Code: 110111","No avanza. Se muestra: ""Error: First Name is required"".",Alta,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-029,Checkout,REQ-09,Apellido vacío en los datos de envío,standard_user,"Página ""Checkout: Your Information"" abierta con un producto en el carrito","1. Llenar First Name.
+2. Dejar vacío Last Name.
+3. Llenar Zip/Postal Code.
+4. Hacer clic en ""Continue"".","First Name: Ana
+Last Name: (vacío)
+Zip/Postal Code: 110111","No avanza. Se muestra: ""Error: Last Name is required"".",Alta,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-030,Checkout,REQ-09,Código postal vacío en los datos de envío,standard_user,"Página ""Checkout: Your Information"" abierta con un producto en el carrito","1. Llenar First Name y Last Name.
+2. Dejar vacío Zip/Postal Code.
+3. Hacer clic en ""Continue"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: (vacío)","No avanza. Se muestra: ""Error: Postal Code is required"".",Alta,Negativa,Valores límite (campo vacío),,No ejecutado,,,,
+TC-031,Checkout,REQ-10,Datos de envío solo con espacios,standard_user,"Página ""Checkout: Your Information"" abierta con un producto en el carrito","1. Escribir solo espacios en los tres campos.
+2. Hacer clic en ""Continue"".","Los tres campos: ""   "" (tres espacios)",No avanza y pide completar los datos. (Requisito inferido: confirmar con el dueño del producto.),Media,Negativa,Partición de equivalencia (inválida),,No ejecutado,,,,
+TC-032,Checkout,REQ-10,Código postal con letras y símbolos,standard_user,"Página ""Checkout: Your Information"" abierta con un producto en el carrito","1. Llenar First Name y Last Name.
+2. Escribir letras y símbolos en Zip/Postal Code.
+3. Hacer clic en ""Continue"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: abc!@#",No avanza e indica que el código postal no es válido. (Requisito inferido: confirmar con el dueño del producto.),Media,Negativa,Partición de equivalencia (inválida),,No ejecutado,,,,
+TC-033,Checkout,REQ-11,"Cálculo de subtotal, impuesto y total",standard_user,Backpack ($29.99) y Bike Light ($9.99) en el carrito; datos de envío llenos,"1. Llegar a ""Checkout: Overview"".
+2. Revisar productos, Item total, Tax y Total.
+3. Verificar los montos con una calculadora.","Sauce Labs Backpack $29.99
+Sauce Labs Bike Light $9.99",Se listan los 2 productos. Item total: $39.98. Tax: $3.20 (8 %). Total: $43.18.,Alta,Funcional,Verificación de cálculo,,No ejecutado,,,,
+TC-034,Checkout,REQ-13,Cancelar la compra en el resumen,standard_user,"Página ""Checkout: Overview"" abierta con productos en el carrito","1. Hacer clic en ""Cancel"".
+2. Revisar el ícono del carrito.",—,Sale del checkout sin completar la compra y los productos siguen en el carrito.,Media,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-035,Checkout,REQ-13,Finalizar la compra,standard_user,"Página ""Checkout: Overview"" abierta con productos en el carrito","1. Hacer clic en ""Finish"".
+2. Revisar el ícono del carrito.",—,"Se muestra ""Thank you for your order!"" y el ícono del carrito queda sin número.",Alta,Funcional,Camino feliz,,No ejecutado,,,,
+TC-036,Checkout,REQ-13,Volver al inicio después de comprar,standard_user,Página de confirmación abierta (continuar desde TC-035),"1. Hacer clic en ""Back Home"".",—,"Vuelve a la página de productos y todos los botones dicen ""Add to cart"".",Baja,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-037,Menú,REQ-04,Cerrar sesión y volver atrás con el navegador,standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el menú (☰, arriba a la izquierda).
+2. Hacer clic en ""Logout"".
+3. Hacer clic en el botón Atrás del navegador.",—,Paso 2: vuelve a la página de login. Paso 3: no se muestran los productos; se pide iniciar sesión.,Alta,Seguridad,Transición de estados,,No ejecutado,,,,
+TC-038,Menú,REQ-14,Restablecer el estado de la app,standard_user,Sesión iniciada con standard_user; 2 productos en el carrito; página de productos abierta,"1. Abrir el menú (☰).
+2. Hacer clic en ""Reset App State"".
+3. Revisar el ícono del carrito y los botones de los productos.",—,"El carrito queda vacío (sin número) y todos los botones vuelven a decir ""Add to cart"".",Media,Funcional,Transición de estados,,No ejecutado,,,,
+TC-039,Menú,REQ-14,"Opción ""About"" del menú",standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el menú (☰).
+2. Hacer clic en ""About"".",—,Se abre el sitio de Sauce Labs (saucelabs.com).,Baja,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-040,Menú,REQ-14,"Opción ""All Items"" desde el carrito",standard_user,Sesión iniciada con standard_user; carrito vacío,"1. Abrir el carrito.
+2. Abrir el menú (☰).
+3. Hacer clic en ""All Items"".",—,Vuelve a la página de productos.,Baja,Funcional,Prueba funcional,,No ejecutado,,,,
+TC-041,Catálogo,REQ-15,problem_user: imágenes correctas en el catálogo,problem_user,Sesión iniciada con problem_user en ventana de incógnito,"1. Observar la imagen de cada producto.
+2. Comparar con el catálogo de standard_user.",—,"Cada producto muestra su propia imagen, igual que con standard_user.",Media,Interfaz / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-042,Flujo completo,REQ-15,problem_user: flujo completo de compra,problem_user,Página de login abierta en ventana de incógnito,"1. Iniciar sesión.
+2. Agregar Sauce Labs Backpack y Sauce Labs Bike Light.
+3. Abrir el carrito y hacer clic en ""Checkout"".
+4. Llenar los datos de envío y hacer clic en ""Continue"".
+5. Revisar el resumen y hacer clic en ""Finish"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111","Cada paso funciona igual que con standard_user y la compra termina con ""Thank you for your order!"".",Alta,Funcional / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-043,Catálogo,REQ-15,problem_user: ordenar por precio,problem_user,Sesión iniciada con problem_user,"1. Abrir el menú de orden.
+2. Elegir ""Price (low to high)"".",Opción: Price (low to high),"Los productos quedan ordenados de menor a mayor precio, igual que en TC-015.",Media,Funcional / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-044,Login,REQ-16,performance_glitch_user: tiempo de inicio de sesión,performance_glitch_user,Página de login abierta en ventana de incógnito,"1. Escribir usuario y contraseña.
+2. Iniciar el cronómetro al hacer clic en ""Login"".
+3. Detenerlo cuando se vean los productos.
+4. Repetir 3 veces y anotar los tiempos en Notas.","Usuario: performance_glitch_user
+Contraseña: válida",La página de productos carga en 3 segundos o menos. (Requisito inferido: confirmar con el dueño del producto.),Media,Rendimiento percibido,Medición con cronómetro,,No ejecutado,,,,
+TC-045,Flujo completo,REQ-15,error_user: flujo completo de compra,error_user,Página de login abierta en ventana de incógnito,"1. Iniciar sesión.
+2. Agregar Sauce Labs Backpack y Sauce Labs Bike Light.
+3. Abrir el carrito y hacer clic en ""Checkout"".
+4. Llenar los datos de envío y hacer clic en ""Continue"".
+5. Revisar el resumen y hacer clic en ""Finish"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111","Cada paso funciona igual que con standard_user y la compra termina con ""Thank you for your order!"".",Alta,Funcional / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-046,Catálogo,REQ-15,error_user: ordenar productos,error_user,Sesión iniciada con error_user,"1. Probar, una por una, las 4 opciones del menú de orden.",Las 4 opciones de orden,"Los productos se ordenan sin mensajes de error, igual que con standard_user.",Media,Funcional / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-047,Catálogo,REQ-15,visual_user: el catálogo se ve igual que con standard_user,visual_user,Dos ventanas de incógnito: una con visual_user y otra con standard_user,"1. Poner las dos ventanas lado a lado.
+2. Comparar imágenes, íconos, botones, textos y alineación.",—,Las dos pantallas se ven iguales.,Media,Interfaz / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-048,Flujo completo,REQ-15,"visual_user: el precio es el mismo en catálogo, carrito y resumen",visual_user,Sesión iniciada con visual_user; carrito vacío,"1. Anotar el precio de Sauce Labs Backpack en el catálogo.
+2. Agregarlo y anotar el precio en el carrito.
+3. Avanzar hasta ""Checkout: Overview"" y anotar el precio.","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111",El precio es igual en las tres pantallas y coincide con el de standard_user ($29.99).,Alta,Funcional / Comparativa,Comparación con oráculo,,No ejecutado,,,,
+TC-049,Flujo completo,REQ-17,Flujo completo de compra en vista móvil,standard_user,"Chrome con DevTools abierto (F12) en modo celular, dispositivo iPhone 12 Pro","1. Activar el modo celular y elegir iPhone 12 Pro.
+2. Recargar la página.
+3. Iniciar sesión.
+4. Agregar Sauce Labs Backpack y Sauce Labs Bike Light.
+5. Abrir el carrito y hacer clic en ""Checkout"".
+6. Llenar los datos de envío y hacer clic en ""Continue"".
+7. Revisar el resumen y hacer clic en ""Finish"".","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111","Todo se lee y se puede tocar sin desplazarse de lado, y la compra termina con ""Thank you for your order!"".",Baja,Compatibilidad,Prueba funcional,,No ejecutado,,,,
+TC-050,Flujo completo,REQ-17,Flujo completo de compra en Firefox,standard_user,Firefox en ventana privada,"1. Repetir en Firefox los casos TC-001, TC-017, TC-027, TC-033 y TC-035.
+2. Comparar con los resultados en Chrome.","First Name: Ana
+Last Name: Gómez
+Zip/Postal Code: 110111",El comportamiento es igual al de Chrome.,Baja,Compatibilidad,Prueba funcional,,No ejecutado,,,,
