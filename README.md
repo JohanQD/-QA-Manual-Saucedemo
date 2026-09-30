@@ -27,7 +27,7 @@
 | **Especialidad** | QA |
 | **Fuente del proyecto** | SauceDemo (Swag Labs), una tienda en línea de práctica creada por Sauce Labs para entrenar testers. Trae varios usuarios de prueba, algunos con fallas intencionales. |
 | **Link a la fuente original** | https://www.saucedemo.com |
-| **Link al proyecto publicado** | https://github.com/[tu-usuario]/qa-manual-saucedemo |
+| **Link al proyecto publicado** | https://github.com/JohanQD/qa-manual-saucedemo |
 
 ## 2. Objetivo
 
